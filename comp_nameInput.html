@@ -16,35 +16,39 @@
 </head>
 <body>
     <!--  Reactコンポーネントを表示するDOMコンテナ -->
-    <div id="likesButtonContainer"></div>
+    <div id="nameInputContainer"></div>
 
     <script type="text/babel">
 
-        // いいねボタン　コンポーネント
-        const LikeButton = () => {
-            // useState()で state の管理
-            // liked へ、「いいね前（False）」「いいね済み（True）」どちらかの状態を持たせる
-            // CDN で useState()を利用する場合は、　React.useState() の記載が必須
-            const [liked, setliked] = React.useState(false);
+        // テキストエリアへの入力値を保持するコンポーネント
+        //　コンポーネント名 = 関数名は必ず頭文字を大文字にする
+       const NameInput = () => {
+        //  nameにinputテキスト入力エリアへの状態を持たせている
+        //  nameの　初期状態：ゲスト
+        // cdnでReactを動かすには　React.useState()が必須
+            
+            const [name, setName] = React.useState("ゲスト");
+            
+            // 入力値を現在の状態 name にセットする関数の定義
+            const handleOnChage = (event) => setName(event.target.value);
 
-            // console.log(liked); //false 
-            // console.log(setliked); // なんかのfunction????
-
-            const toggleLiked = () => setliked(!liked);
-            /*  false : いいね /　true: いいね済み */
+            // 入力した状態を setName で　現在の状態である　text にセット
+            // 入力したテキストの状態を　name に保持させている
             return (
-                <button className="LikeButton" onClick={toggleLiked}>
-                    {liked ? 'いいね済': 'いいね前'}
-                </button>
+                <div>
+                    <input type="text" onChange={handleOnChage} />
+                    <p>こんにちは、{name}さん</p>
+                </div>
             )
+           
         };
 
         //domcontaine 定義
-        const domContainer = document.getElementById('likesButtonContainer');
+        const domContainer = document.getElementById('nameInputContainer');
     
         // ReactがコンポーネントをDOMに変換して HTMLのdomContainer へ挿入
         //render(コンポーネント、コンテナ)
-        ReactDOM.render(<LikeButton />, domContainer);
+        ReactDOM.render(<NameInput />, domContainer);
     </script>
 
 
