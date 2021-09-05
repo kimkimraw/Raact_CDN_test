@@ -8,22 +8,11 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
-
     <!-- ReactとJSXの読み込み -->
-    <script
-    crossorigin
-    src="https://unpkg.com/react@17/umd/react.development.js"    　　　
-   ></script>
-   <script
-    crossorigin
-    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-   ></script>
-
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
    <!-- babelを読み込むことでJSXが利用可能 -->
-   <script
-    src="https://unpkg.com/babel-standalone@6/babel.min.js"
-   ></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <!--  Reactコンポーネントを表示するDOMコンテナ -->
@@ -35,9 +24,12 @@
         const LikeButton = () => {
             // useState()で state の管理
             // liked へ、「いいね前（False）」「いいね済み（True）」どちらかの状態を持たせる
-            // 初期値：　false
             // CDN で useState()を利用する場合は、　React.useState() の記載が必須
             const [liked, setliked] = React.useState(false);
+
+            // console.log(liked); //false 
+            // console.log(setliked); // なんかのfunction????
+
             const toggleLiked = () => setliked(!liked);
             /*  false : いいね /　true: いいね済み */
             return (
