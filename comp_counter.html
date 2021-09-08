@@ -16,19 +16,26 @@
 </head>
 <body>
     <!--  Reactコンポーネントを表示するDOMコンテナ -->
-    <div id="counterContainer"></div>
+    <div id="udetateCounterContainer"></div>
+    <div id="skuwatCounterContainer"></div>
     
 
     <script type="text/babel">
 
         // 現在の　count を　Counterコンポーネントから props で受け取る
-        const CounterText = (props) => <p>現在のカウント数: {props.count}</p>;
+        const CounterText = (props) => {
+            return(
+                <p>
+                    <b>{props.name}</b>のカウント数：{props.count}
+                </p>
+            )
+        }
 
         // カウンター　コンポーネント
         // 定数はスネークケース記法（全て大文字、単語をアンスコで繋ぐ）
         const INITIAL_COUNT = 0;
 
-        const Counter = () => {
+        const Counter = (props) => {
             // count は現在の値
             // setCountは現在の値を更新するための関数   
             // 初期値　INITIAL_COUNT をリセット 
@@ -49,7 +56,7 @@
             return (
                 
                 <div>
-                    <CounterText count={count} />
+                    <CounterText count={count} name={props.name}/>
                     <button onClick={countAdd}>+</button>          
                     <button onClick={countSub}>-</button>
                     <button onClick={countReset}>リセット</button>
@@ -58,12 +65,22 @@
             );
         }
 
+
         //domcontaine 定義
-        const domContainer = document.getElementById('counterContainer');
+        const ude_domContainer = document.getElementById('udetateCounterContainer');
+        const sku_domContainer = document.getElementById('skuwatCounterContainer')
     
         // ReactがコンポーネントをDOMに変換して HTMLのdomContainer へ挿入
         //render(コンポーネント、コンテナ)
-        ReactDOM.render(<Counter />, domContainer);
+        ReactDOM.render(<Counter name="腕立てふせ"/>,ude_domContainer);
+        ReactDOM.render(<Counter name="スクワット"/>,sku_domContainer);
+        
+            // <Counter name="腹筋" />
+            // <Counter name="スクワット" />}
+
+        
+
+        
     </script>
 
 
