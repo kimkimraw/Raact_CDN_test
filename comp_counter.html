@@ -17,8 +17,12 @@
 <body>
     <!--  Reactコンポーネントを表示するDOMコンテナ -->
     <div id="counterContainer"></div>
+    
 
     <script type="text/babel">
+
+        // 現在の　count を　Counterコンポーネントから props で受け取る
+        const CounterText = (props) => <p>現在のカウント数: {props.count}</p>;
 
         // カウンター　コンポーネント
         // 定数はスネークケース記法（全て大文字、単語をアンスコで繋ぐ）
@@ -37,18 +41,22 @@
             // count を INITIAL _COUNTに　リセットする関数を定義
             const countReset = () => setCount(INITIAL_COUNT);
 
+            
+
             // 1ずつカウントアップするボタン
             // 1ずつカウントダウンするボタン
             // count を INITIAL_COUNT に戻すボタン
             return (
-                <div>   
+                
+                <div>
+                    <CounterText count={count} />
                     <button onClick={countAdd}>+</button>          
                     <button onClick={countSub}>-</button>
                     <button onClick={countReset}>リセット</button>
-                    <p>カウント：{count}</p>
+                    
                 </div>
             );
-        }      
+        }
 
         //domcontaine 定義
         const domContainer = document.getElementById('counterContainer');
